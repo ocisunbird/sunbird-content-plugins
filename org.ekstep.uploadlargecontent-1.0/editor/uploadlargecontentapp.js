@@ -89,7 +89,7 @@ angular.module('org.ekstep.uploadlargecontent-1.0', []).controller('largeUploadC
                 },
                 onSubmit: function (id, name) {
                     $('#qq-upload-actions').hide();
-                    $('#progressElement').show();
+                    // $('#progressElement').show();
                     $scope.selectedFile = $scope.uploader.getFile(0)
                     $scope.totalBytesRemaining = $scope.selectedFile.size;
                     $scope.fileValidation()
@@ -205,71 +205,35 @@ angular.module('org.ekstep.uploadlargecontent-1.0', []).controller('largeUploadC
             } else {
                 $scope.submitUri = res.data.result.pre_signed_url;
                 console.log('getPresignedURL pre_signed_url..' + res.data.result.pre_signed_url)
-                var cloudstorage = ecEditor.getConfig('cloudStorage.provider');
+                var cloudstorage = _.get(ecEditor.getConfig('cloudStorage'), 'provider');
                 console.log('cloudstorage..' + cloudstorage);
                 if (typeof cloudstorage !== "undefined" && cloudstorage.localeCompare("azure") == 0) {
                     $scope.uploadFileInBlocks();
                 }
                 else 
                 {
-                    $scope.S3_ENDPOINT = '';
-                    const endpoint = new AWS.Endpoint($scope.S3_ENDPOINT);
-                    console.log('endpoint..' + endpoint);
-                    const s3 = new AWS.S3({
-                        endpoint: endpoint,
-                        accessKeyId: $scope.S3_KEY,
-                        secretAccessKey: $scope.S3_SECRET,
-                        maxRetries: 10
-                    });
-                    var fileUrl = $scope.submitUri.split('?')[0]
-                    console.log('fileUrl..' + fileUrl)
-                    // $scope.fileKey = 'odev-dev-diksha-contents/content/assets/' + ecEditor.getContext('contentId') + '/' + $scope.uploader.getName(0);
-                    // $scope.bucket = 'bmzbbujw9kal';
-                    $scope.fileKey = fileUrl.substring(fileUrl.indexOf(".com/")+5, fileUrl.length);
-                    $scope.bucket = fileUrl.substring(fileUrl.indexOf("//")+2, fileUrl.indexOf("."));
-                    console.log('fileKey..' + $scope.fileKey)
-                    console.log('bucket..' + $scope.bucket)
-                    // Upload
-                    $scope.startTime = new Date();
-                    var partNum = 0;
-                    var partSize = 1024 * 1024 * 5; // Minimum 5MB per chunk (except the last part) 
-                    $scope.numPartsLeft = Math.ceil($scope.selectedFile.size / partSize);
-                    $scope.totalParts = Math.ceil($scope.selectedFile.size / partSize);;
-                    $scope.maxUploadTries = 3;
                     const contentType = ($scope.uploader.getFile(0) != null) ? $scope.detectMimeType($scope.uploader.getName(0)) : '';
-                    var multiPartParams = {
-                        Bucket: $scope.bucket,
-                        Key: $scope.fileKey,
-                        ContentType: contentType
-                    };
-                    $scope.multipartMap = {
-                        Parts: []
-                    };
-
-                    console.log("Creating multipart upload for:", $scope.fileKey);
-                    s3.createMultipartUpload(multiPartParams, function (mpErr, multipart) {
-                        if (mpErr) { console.log('Error!', mpErr); return; }
-                        console.log("Got upload ID", multipart.UploadId);
-
-                        // Grab each partSize chunk and upload it as a part
-                        for (var rangeStart = 0; rangeStart < $scope.selectedFile.size; rangeStart += partSize) {
-                            partNum++;
-                            var end = Math.min(rangeStart + partSize, $scope.selectedFile.size),
-                                partParams = {
-                                    Body: $scope.selectedFile.slice(rangeStart, end),
-                                    Bucket: $scope.bucket,
-                                    Key: $scope.fileKey,
-                                    PartNumber: String(partNum),
-                                    UploadId: multipart.UploadId
-                                };
-
-                            // Send a single part
-                            console.log('Uploading part: #', partParams.PartNumber, ', Range start:', rangeStart);
-                            $scope.uploadPart(s3, multipart, partParams);
-
-
+                    var config = {
+                        processData: false,
+                        contentType: contentType,
+                    }
+                    config = $scope.contentService.appendCloudStorageHeaders(config);
+                    $scope.contentService.uploadDataToSignedURL($scope.submitUri, $scope.uploader.getFile(0), config, function(err, res) {
+                        if (err) {
+                            $scope.showLoader(false);
+                            ecEditor.dispatchEvent("org.ekstep.toaster:error", {
+                                message: 'error while uploading!',
+                                position: 'topCenter',
+                                icon: 'fa fa-warning'
+                            });
+                        } else {
+                            $scope.updateContentWithURL($scope.submitUri.split('?')[0]);            
+                            var delta = (new Date() - $scope.startTime) / 1000;
+                            console.log('Completed upload in', delta, 'seconds');
+                            // $scope.toasterMsgHandler("success", "content uploaded successfully!")
+                            ecEditor.dispatchEvent("org.ekstep.genericeditor:reload");
+                            $scope.closeThisDialog();
                         }
-
                     })
                 }
             }
@@ -422,9 +386,6 @@ angular.module('org.ekstep.uploadlargecontent-1.0', []).controller('largeUploadC
 
     $scope.updateContentWithURL = function (fileURL) {
         var data = new FormData();
-        console.log('fileURL in updateContentWithURL..' + fileURL)
-        console.log('data in updateContentWithURL..' + data)
-        console.log('mimeType in updateContentWithURL..' + $scope.mimeType)
         data.append("fileUrl", fileURL);
         data.append("mimeType", $scope.mimeType);
         var config = {
@@ -448,17 +409,16 @@ angular.module('org.ekstep.uploadlargecontent-1.0', []).controller('largeUploadC
 
     $scope.reader.onloadend = function (evt) {
         if (evt.target.readyState == FileReader.DONE) {
-            var uri = $scope.submitUri + '&uploadid=' + upload + "&id=<>";
-
-            var uri = $scope.submitUri + '&comp=block&blockid=' + $scope.blockIds[$scope.blockIds.length - 1];
+            // var uri = $scope.submitUri + '&comp=block&blockid=' + $scope.blockIds[$scope.blockIds.length - 1];
+            var uri = $scope.submitUri.split('?')[0] + "?uploads&"+$scope.submitUri.split('?')[1];
             var requestData = new Uint8Array(evt.target.result);
+            
             const fetchPromise = $scope.fetchRetry(uri, {
                 "headers": {
-                    "Content-Type": $scope.mimeType,
-                    "x-ms-blob-type": "BlockBlob"
+                    "Content-Type": $scope.mimeType
                 },
                 "body": requestData,
-                "method": "PUT",
+                "method": "POST",
             }, $scope.delayBetweenRetryCalls, $scope.retryChunkUploadLimit);
 
             fetchPromise.then($scope.handleErrors)
