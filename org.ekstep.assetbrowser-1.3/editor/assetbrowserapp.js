@@ -658,7 +658,7 @@ angular.module('assetbrowserapp').controller('browsercontroller', ['$scope', '$i
             $scope.contentService.createContent(data, function (err, res) {
                 if (err) {
                     ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                        message: 'Unable to create content!',
+                        message: 'Unable to create content, please try again later!',
                         position: 'topCenter',
                         icon: 'fa fa-warning'
                     });
