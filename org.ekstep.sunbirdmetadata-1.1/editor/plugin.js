@@ -226,7 +226,7 @@ org.ekstep.contenteditor.metadataPlugin.extend({
             // results is now equals to: {config: {}, framework: {}, resourceBundle:{}}
             if (error) {
                 ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                    message: 'Unable to open form, please try again later!',
+                    message: 'Unable to open form at this time, please try again in some time!',
                     position: 'topCenter',
                     icon: 'fa fa-warning'
                 });
