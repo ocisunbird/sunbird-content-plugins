@@ -301,7 +301,7 @@ angular.module('org.ekstep.sunbirdcommonheader:app', ["Scope.safeApply", "yaru22
                         });
                     } else {
                         ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                            message: 'Unable to save content, try again!',
+                            message: 'Unable to save content, please try again later!',
                             position: 'topCenter',
                             icon: 'fa fa-warning'
                         });

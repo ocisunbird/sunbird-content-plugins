@@ -154,7 +154,7 @@ angular.module('org.ekstep.uploadlargecontent-1.0', []).controller('largeUploadC
             
             $scope.contentService.createContent(data, function (err, res) {
                 if (err) {
-                    $scope.toasterMsgHandler("error", "Unable to create content!")
+                    $scope.toasterMsgHandler("error", "Unable to create content, please try again later!")
                 } else {
                     var result = res.data.result;
                     ecEditor.setContext('contentId', result.node_id);
@@ -315,7 +315,7 @@ angular.module('org.ekstep.uploadlargecontent-1.0', []).controller('largeUploadC
         $scope.contentService.uploadContent(ecEditor.getContext('contentId'), data, config, function (err, res) {
             console.log('res..'+res)
             if (err) {
-                $scope.toasterMsgHandler("error", "Unable to upload content!")
+                $scope.toasterMsgHandler("error", "Unable to upload content, please try again later!")
             } else {
                 $scope.toasterMsgHandler("success", "content uploaded successfully!")
                 ecEditor.dispatchEvent("org.ekstep.genericeditor:reload");
