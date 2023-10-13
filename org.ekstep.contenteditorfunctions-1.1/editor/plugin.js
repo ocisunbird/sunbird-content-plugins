@@ -298,7 +298,7 @@ org.ekstep.contenteditor.basePlugin.extend({
                 });
             } else {
                 ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                    message: 'Unable to publish content, please try again later!',
+                    message: 'Unable to publish content at this time, please try again in some time!',
                     position: 'topCenter',
                     icon: 'fa fa-warning'
                 });
@@ -433,7 +433,7 @@ org.ekstep.contenteditor.basePlugin.extend({
 
             } else {
                 if (data.showNotification) ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                    message: 'Unable to save the content, please try again later!',
+                    message: 'Unable to save the content at this time, please try again in some time!',
                     position: 'topCenter',
                     icon: 'fa fa-warning'
                 });

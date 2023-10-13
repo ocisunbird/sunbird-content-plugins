@@ -70,7 +70,7 @@ angular.module('org.ekstep.sunbirdcommonheader:app', ["Scope.safeApply", "yaru22
     $scope.disableTocActionBtn = false;
     $scope.loader = false;
     $scope.CONSTANTS = {
-        tocDownloadFailed: 'Unable to download the content, please try again later',
+        tocDownloadFailed: 'Unable to download the content at this time, please try again in some time!',
         tocDownloadSuccess: 'Table of Content downloaded!',
         tocUpdateHeader: 'Update Table of Contents Metadata attributes via CSV',
         tocUpdateDescription: 'Please note that no sections can be added or removed through this update, only the values of the attributes can be changed.',
@@ -301,7 +301,7 @@ angular.module('org.ekstep.sunbirdcommonheader:app', ["Scope.safeApply", "yaru22
                         });
                     } else {
                         ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                            message: 'Unable to save content, please try again later!',
+                            message: 'Unable to save the content at this time, please try again in some time! ',
                             position: 'topCenter',
                             icon: 'fa fa-warning'
                         });
@@ -529,7 +529,7 @@ angular.module('org.ekstep.sunbirdcommonheader:app', ["Scope.safeApply", "yaru22
                     document.body.removeChild(link);
                 } else {
                     ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                        message: 'Unable to download the content, please try again later',
+                        message: 'Unable to download the content at this time, please try again in some time!',
                         position: 'topCenter',
                         icon: 'fa fa-warning'
                     });

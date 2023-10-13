@@ -57,7 +57,7 @@ angular.module('org.ekstep.genericeditor', ["Scope.safeApply", "yaru22.angular-t
                         });
                     } else {
                         ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                            message: 'Unable to save content, please try again later!',
+                            message: 'Unable to save the content at this time, please try again in some time! ',
                             position: 'topCenter',
                             icon: 'fa fa-warning'
                         });
@@ -99,7 +99,7 @@ angular.module('org.ekstep.genericeditor', ["Scope.safeApply", "yaru22.angular-t
                     document.body.removeChild(link);
                 }else {
                     ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                        message: 'Unable to download the content, please try again later',
+                        message: 'Unable to download the content at this time, please try again in some time!',
                         position: 'topCenter',
                         icon: 'fa fa-warning'
                     });
