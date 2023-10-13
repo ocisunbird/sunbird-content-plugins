@@ -674,7 +674,7 @@ angular.module('assetbrowserapp').controller('browsercontroller', ['$scope', '$i
 
                 }else{
                     ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                        message: 'Unable to create content!',
+                        message: 'Unable to create content, please try again later!',
                         position: 'topCenter',
                         icon: 'fa fa-warning'
                     });
@@ -739,7 +739,7 @@ angular.module('assetbrowserapp').controller('browsercontroller', ['$scope', '$i
         $scope.contentService.uploadContent(nodeID, data, config, function(err, resp) {
             if (err) {
                 ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                    message: 'Unable to upload content!',
+                    message: 'Unable to upload content, please try again later!',
                     position: 'topCenter',
                     icon: 'fa fa-warning'
                 });
