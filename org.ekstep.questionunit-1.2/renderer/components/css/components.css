@@ -336,11 +336,11 @@ body {
     max-height: 41vh;
     z-index: 2;
     background: white;
-    margin-bottom: 8vh;
+    margin-bottom: 6vh;
 }
 
 .question-container-big.no-qimage .text-image-container .hiding-container .expand-container {
-    max-height:56vh;
+    /* max-height:56vh; */
     z-index: 2;
     background: white;
     margin-bottom: 8vh;
