@@ -124,7 +124,7 @@ angular.module('org.ekstep.uploadcontent-1.5', []).controller('uploadController'
             case 'webm':
                 return 'video/webm';
             case 'mp3':
-                return 'audio/mpeg';
+                return 'audio/mp3';
             default:
                return $scope.validateUploadURL(fileName);
         }
