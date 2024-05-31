@@ -245,6 +245,8 @@
     width: 48%;
     display: inline-block;
     margin: 1px 1px 1px 1px;
+    height: 100vh;
+    overflow: auto;
 }
 .mcq-content-container .option-container .horizontal .option-block-container .option-width-50 .option-text-container-mcq .mcq-imagegrid-text{
     width: 70vw;
@@ -397,8 +399,8 @@ mcq-content-container .option-container.horizontal .option-block-container .opti
     transform: translateY(-50%);
 }
 .mcq-content-container .option-container.horizontal .option-block-container .option-width-50 .option-text-container-mcq>span>p{
-    overflow: hidden;
-    white-space: nowrap;
+    /* overflow: hidden;
+    white-space: nowrap; */
     text-overflow: ellipsis;
 }
 .mcq-content-container .option-container.horizontal .option-block:last-child {
