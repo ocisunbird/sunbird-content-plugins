@@ -245,7 +245,7 @@
     width: 48%;
     display: inline-block;
     margin: 1px 1px 1px 1px;
-    height: 100vh;
+    height: 40vh;
     overflow: auto;
 }
 .mcq-content-container .option-container .horizontal .option-block-container .option-width-50 .option-text-container-mcq .mcq-imagegrid-text{
