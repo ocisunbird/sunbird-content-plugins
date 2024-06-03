@@ -147,7 +147,7 @@ org.ekstep.mcq.questionComponent = {
                 }
                 var expandButtonBottom = parseFloat($('.expand-button').css('bottom'));
                 $('.hiding-container').addClass('expanded')
-                // $('.hiding-container').css('height', 'auto');
+                $('.hiding-container').css('height', 'auto');
                 $('.expand-button').css('bottom', '5%');
                 $(".expand-button img").toggleClass('flip');
                 $('.hiding-container').css('padding-bottom', $(".expand-button").height()+'px');
@@ -166,7 +166,7 @@ org.ekstep.mcq.questionComponent = {
             } else {
                 var expandButtonBottom = parseFloat($('.expand-button').css('bottom'));
                 $('.hiding-container').addClass('expanded')
-                // $('.hiding-container').css('height', 'auto');
+                $('.hiding-container').css('height', 'auto');
                 $('.hiding-container').css('box-shadow', '0 2px 4px 0 rgba(0, 0, 0, 0.15)');
                 $(".expand-button img").toggleClass('flip');
                 $('.hiding-container').css('padding-bottom', $(".expand-button").height() + 'px');
