@@ -147,7 +147,7 @@ org.ekstep.mcq.questionComponent = {
                 }
                 var expandButtonBottom = parseFloat($('.expand-button').css('bottom'));
                 $('.hiding-container').addClass('expanded')
-                $('.hiding-container').css('height', 'auto');
+                $('.hiding-container').css('height', 'auto'); 
                 $('.expand-button').css('bottom', '5%');
                 $(".expand-button img").toggleClass('flip');
                 $('.hiding-container').css('padding-bottom', $(".expand-button").height()+'px');
