@@ -72,6 +72,7 @@ org.ekstep.contenteditor.basePlugin.extend({
             case "application/epub":
             case "video/mp4":
             case "audio/mpeg":
+            case "audio/mp3":
             case "application/pdf":
             case "video/x-youtube":
             case "video/webm":
