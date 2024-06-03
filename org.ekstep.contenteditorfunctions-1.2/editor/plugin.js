@@ -58,7 +58,7 @@ org.ekstep.contenteditor.basePlugin.extend({
     },
     resolveSaveFn: function(event, data) {
         var meta = ecEditor.getService(ServiceConstants.CONTENT_SERVICE).getContentMeta(ecEditor.getContext('contentId'));
-       console.log('mimeType :',meta.mimeType)
+       console.log('mimeType -1.2- 160494 :',meta.mimeType)
         switch (meta.mimeType) {
             case "application/vnd.ekstep.ecml-archive":
                 this.saveContent(event, data);

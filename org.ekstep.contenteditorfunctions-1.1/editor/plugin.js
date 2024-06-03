@@ -51,6 +51,7 @@ org.ekstep.contenteditor.basePlugin.extend({
     },
     resolveSaveFn: function(event, data) {
         var meta = ecEditor.getService(ServiceConstants.CONTENT_SERVICE).getContentMeta(ecEditor.getContext('contentId'));
+        console.log('mimeType -1.1 160494 :',meta.mimeType)
         switch (meta.mimeType) {
             case "application/vnd.ekstep.ecml-archive":
                 this.saveContent(event, data);
@@ -64,6 +65,7 @@ org.ekstep.contenteditor.basePlugin.extend({
             case "application/epub":
             case "video/mp4":
             case "audio/mpeg":
+            case "audio/mp3":
             case "application/pdf":
             case "video/x-youtube":
             case "video/webm":
