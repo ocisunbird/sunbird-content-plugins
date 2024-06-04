@@ -240,12 +240,13 @@
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
     position: relative;
     display: flex;
+    left: 13%;
 }
 .mcq-content-container .option-container.horizontal .option-block-container .option-width-50 {
-    width: 48%;
+    width: 34%;
     display: inline-block;
-    margin: 1px 1px 1px 1px;
-    height: 39vh;
+    margin: 6px 1px 1px 1px;
+    height: 18vh;
     overflow: auto;
 }
 .mcq-content-container .option-container .horizontal .option-block-container .option-width-50 .option-text-container-mcq .mcq-imagegrid-text{
