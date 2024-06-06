@@ -240,11 +240,14 @@
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
     position: relative;
     display: flex;
+    left: 13%;
 }
 .mcq-content-container .option-container.horizontal .option-block-container .option-width-50 {
-    width: 48%;
+    width: 34%;
     display: inline-block;
     margin: 1px 1px 1px 1px;
+    height: 18vh;
+    overflow: auto;
 }
 .mcq-content-container .option-container .horizontal .option-block-container .option-width-50 .option-text-container-mcq .mcq-imagegrid-text{
     width: 70vw;
@@ -397,8 +400,8 @@ mcq-content-container .option-container.horizontal .option-block-container .opti
     transform: translateY(-50%);
 }
 .mcq-content-container .option-container.horizontal .option-block-container .option-width-50 .option-text-container-mcq>span>p{
-    overflow: hidden;
-    white-space: nowrap;
+    /* overflow: hidden;
+    white-space: nowrap; */
     text-overflow: ellipsis;
 }
 .mcq-content-container .option-container.horizontal .option-block:last-child {
