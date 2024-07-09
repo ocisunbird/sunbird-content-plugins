@@ -233,17 +233,17 @@
 .mcq-content-container .option-container.horizontal .option-block-container .option-block {
     cursor: pointer;
     width: 100%;
-    height: auto;
+    height: 15vh;
     margin-bottom: 1.5625%;
     border-radius: 4px;
     background-color: #FFFFFF;
     box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
     position: relative;
     display: flex;
-    left: 13%;
+    /* left: 13%; */
 }
 .mcq-content-container .option-container.horizontal .option-block-container .option-width-50 {
-    width: 34%;
+    width: 44%;
     display: inline-block;
     margin: 1px 1px 1px 1px;
     height: 18vh;
@@ -355,6 +355,8 @@
     display: table-cell;
     vertical-align: middle;
     padding-left: 5%;
+    overflow: auto;
+    padding-top: 4vh;
 }
 mcq-content-container .option-container.horizontal .option-block-container .option-block .option-text-container.imagegrid-text-mcq{
     display: block;
