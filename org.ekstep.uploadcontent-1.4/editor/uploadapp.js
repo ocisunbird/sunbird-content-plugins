@@ -19,7 +19,7 @@ angular.module('org.ekstep.uploadcontent-1.4', []).controller('uploadController'
             autoUpload: false,
             multiple: false,
             validation: {
-                allowedExtensions: ['pdf', 'epub', 'mp4', 'h5p', 'zip', 'webm'],
+                allowedExtensions: ['pdf', 'epub', 'mp4', 'h5p', 'zip', 'webm', 'mp3'],
                 itemLimit: 1,
                 sizeLimit: 52428800 // 50 MB = 50 * 1024 * 1024 bytes
             },
@@ -95,6 +95,8 @@ angular.module('org.ekstep.uploadcontent-1.4', []).controller('uploadController'
                 return 'application/epub';
             case 'webm':
                 return 'video/webm';
+            case 'mp3':
+                return 'audio/mp3';
             default:
                return $scope.validateUploadURL(fileName);
         }
@@ -180,7 +182,7 @@ angular.module('org.ekstep.uploadcontent-1.4', []).controller('uploadController'
         var mimeType = fileUpload ? $scope.detectMimeType($scope.uploader.getName(0)) : $scope.detectMimeType($scope.contentURL);
         if (!mimeType) {
             ecEditor.dispatchEvent("org.ekstep.toaster:error", {
-                message: 'Invalid content type (supported type: pdf, epub, h5p, mp4, youtube, html-zip, webm, whitelisted-domain)',
+                message:  'Invalid content type (supported type: pdf, epub, h5p, mp3, mp4, youtube, html-zip, webm, whitelisted-domain)',
                 position: 'topCenter',
                 icon: 'fa fa-warning'
             });
