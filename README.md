@@ -19,3 +19,14 @@
 Repository of the EkStep Content Editor Plugins. These plugins are made available as reference and examples of how to accomplish certain tasks for the plugin developers. The code is made available under the MIT license. 
 
 For detailed guide and instructions on developing the plugins, please visit the EkStep developer portal (http://community.ekstep.in/developers).
+
+## Latest Installation, Build and Publish Process 2024
+##Installation
+1. It is angular 1 version. No need to install any thing. We are uinsg org.ekstep.metadata-1.5 folder for current task
+ 
+##Build
+1.No need to create build
+ 
+ 
+##Publish 
+1. Deploy code in plugin, no need to publish
