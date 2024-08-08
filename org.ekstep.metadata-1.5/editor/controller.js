@@ -162,9 +162,9 @@ angular.module('org.ekstep.metadataform', []).controller('metadataForm', ['$scop
                 });
             })
         }  
-        console.log("associationsplugin before",associations);
+        console.log("getParentAssociationsplugin before",associations);
         associations.sort((a,b) => a.code.localeCompare(b.code, undefined, {numeric: true}));
-        console.log("associationsplugin after",associations);
+        console.log("getParentAssociationsplugin after",associations);
         callback(associations);
     };
 
@@ -206,6 +206,9 @@ angular.module('org.ekstep.metadataform', []).controller('metadataForm', ['$scop
                 })
             }
         });
+        console.log("getAssociations pulgin before==",associations);
+        associations.sort((a,b) => a.code.localeCompare(b.code, undefined, {numeric: true}));
+        console.log("getAssociations pulgin after==",associations);
         callback && callback(associations);
     }
 
