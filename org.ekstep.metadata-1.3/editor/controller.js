@@ -180,6 +180,9 @@ angular.module('org.ekstep.metadataform', []).controller('metadataForm', ['$scop
                 })
             }
         });
+        console.log("getAssociations pulgin 1.3 before==",associations);
+        associations.sort((a,b) => a.code.localeCompare(b.code, undefined, {numeric: true}));
+        console.log("getAssociations pulgin 1.3 after==",associations);
         callback && callback(associations);
     }
 

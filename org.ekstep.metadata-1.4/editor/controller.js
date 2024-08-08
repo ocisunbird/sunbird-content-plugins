@@ -160,6 +160,9 @@ angular.module('org.ekstep.metadataform', []).controller('metadataForm', ['$scop
                 });
             })
         }  
+        console.log("getParentAssociations pulgin 1.4 before==",associations);
+        associations.sort((a,b) => a.code.localeCompare(b.code, undefined, {numeric: true}));
+        console.log("getParentAssociations pulgin 1.4 after==",associations);
         callback(associations);
     };
 
@@ -201,6 +204,9 @@ angular.module('org.ekstep.metadataform', []).controller('metadataForm', ['$scop
                 })
             }
         });
+        console.log("getAssociations pulgin 1.4 before==",associations);
+        associations.sort((a,b) => a.code.localeCompare(b.code, undefined, {numeric: true}));
+        console.log("getAssociations pulgin 1.4 after==",associations);
         callback && callback(associations);
     }
 
