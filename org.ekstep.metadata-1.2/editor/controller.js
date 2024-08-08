@@ -179,6 +179,9 @@ angular.module('org.ekstep.metadataform', []).controller('metadataForm', ['$scop
                 })
             }
         });
+        console.log("associationsplugin 1.2 before",associations);
+        associations.sort((a,b) => a.code.localeCompare(b.code, undefined, {numeric: true}));
+        console.log("associationsplugin 1.2 after",associations);
         callback && callback(associations);
     }
 
