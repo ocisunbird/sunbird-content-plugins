@@ -27,6 +27,6 @@ For detailed guide and instructions on developing the plugins, please visit the 
 ##Build
 1.No need to create build
  
- 
 ##Publish 
 1. Deploy code in plugin, no need to publish
+org.ekstep.metadata-1.5 is working in current project 
